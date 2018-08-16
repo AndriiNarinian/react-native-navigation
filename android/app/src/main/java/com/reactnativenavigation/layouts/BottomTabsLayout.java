@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -36,6 +37,7 @@ import com.reactnativenavigation.screens.ScreenStack;
 import com.reactnativenavigation.utils.Task;
 import com.reactnativenavigation.utils.ViewUtils;
 import com.reactnativenavigation.views.BottomTabs;
+import com.reactnativenavigation.views.ContentView;
 import com.reactnativenavigation.views.LightBox;
 import com.reactnativenavigation.views.SideMenu;
 import com.reactnativenavigation.views.SideMenu.Side;
@@ -81,6 +83,7 @@ public class BottomTabsLayout extends BaseLayout implements AHBottomNavigation.O
         createSnackbarContainer();
         showInitialScreenStack();
         setInitialTabIndex();
+        addOverlay();
     }
 
     private void setInitialTabIndex() {
@@ -128,6 +131,20 @@ public class BottomTabsLayout extends BaseLayout implements AHBottomNavigation.O
     private void createBottomTabs() {
         bottomTabs = new BottomTabs(getContext());
         bottomTabs.addTabs(params.tabParams, this);
+    }
+
+    private boolean addOverlay() {
+        if (params.overlayParams == null) {
+            return false;
+        }
+        int oneDp = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1f, getResources().getDisplayMetrics()));
+        ContentView overlayView = new ContentView(getContext(), params.overlayParams.screenId, params.overlayParams.navigationParams);
+        LayoutParams lp2 = new LayoutParams(params.overlayParams.width * oneDp, params.overlayParams.height * oneDp);
+        overlayView.setX(params.overlayParams.left * oneDp);
+        overlayView.setY(params.overlayParams.top * oneDp);
+        addView(overlayView, lp2);
+        
+        return true;
     }
 
     private void addBottomTabs() {

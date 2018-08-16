@@ -85,6 +85,8 @@
     NSDictionary *tabsStyle = props[@"style"];
     NSDictionary *overlayConfig = props[@"overlay"];
 
+    NSLog("overlayConfig is %@", overlayConfig);;
+
     if (tabsStyle) {
         NSString *tabBarButtonColor = tabsStyle[@"tabBarButtonColor"];
         if (tabBarButtonColor) {
@@ -206,27 +208,27 @@
     // replace the tabs
     self.viewControllers = viewControllers;
     
-  //render overlay
-  if (overlayConfig) {
-    RCTRootView *overlayView = [[RCTRootView alloc] initWithBridge:bridge
-                                                        moduleName:overlayConfig[@"screen"]
-                                                 initialProperties:overlayConfig[@"passProps"]];
-    
-    id overlayPositions = overlayConfig[@"position"];
-    id leftInset = overlayPositions[@"left"];
-    id topInset = overlayPositions[@"top"];
-    id heightInset = overlayPositions[@"height"];
-    id widthInset = overlayPositions[@"width"];
-    
-    CGFloat left = leftInset != (id)[NSNull null] ? [RCTConvert CGFloat:leftInset] : 0;
-    CGFloat height = heightInset != (id)[NSNull null] ? [RCTConvert CGFloat:heightInset] : 0;
-    CGFloat width = widthInset != (id)[NSNull null] ? [RCTConvert CGFloat:widthInset] : 0;
-    CGFloat top = topInset != (id)[NSNull null] ? [RCTConvert CGFloat:topInset] : 0;
-    
-    overlayView.frame = CGRectMake(left, top, width, height);
-    overlayView.backgroundColor = UIColor.clearColor;
-    [self.view addSubview:overlayView];
-  }
+    //render overlay
+    if (overlayConfig) {
+        RCTRootView *overlayView = [[RCTRootView alloc] initWithBridge:bridge
+                                                            moduleName:overlayConfig[@"screen"]
+                                                     initialProperties:overlayConfig[@"passProps"]];
+        
+        id overlayPositions = overlayConfig[@"position"];
+        id leftInset = overlayPositions[@"left"];
+        id topInset = overlayPositions[@"top"];
+        id heightInset = overlayPositions[@"height"];
+        id widthInset = overlayPositions[@"width"];
+        
+        CGFloat left = leftInset != (id)[NSNull null] ? [RCTConvert CGFloat:leftInset] : 0;
+        CGFloat height = heightInset != (id)[NSNull null] ? [RCTConvert CGFloat:heightInset] : 0;
+        CGFloat width = widthInset != (id)[NSNull null] ? [RCTConvert CGFloat:widthInset] : 0;
+        CGFloat top = topInset != (id)[NSNull null] ? [RCTConvert CGFloat:topInset] : 0;
+        
+        overlayView.frame = CGRectMake(left, top, width, height);
+        overlayView.backgroundColor = UIColor.clearColor;
+        [self.view addSubview:overlayView];
+    }
 
     NSNumber *initialTab = tabsStyle[@"initialTabIndex"];
     if (initialTab) {

@@ -1,21 +1,21 @@
 {
-  "name": "react-native-navigation",
-  "version": "1.1.406",
+  "name": "rolique-react-native-navigation",
+  "version": "1.2.4",
   "description": "React Native Navigation - truly native navigation for iOS and Android",
   "license": "MIT",
   "nativePackage": true,
-  "author": "Tal Kol <talkol@gmail.com>",
+  "author": "Andrii Narinian <andrii.narinian@rolique.io> (https://github.com/AndriiNarinian)",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
   "bugs": {
-    "url": "https://github.com/wix/react-native-navigation/issues"
+    "url": "https://github.com/AndriiNarinian/react-native-navigation/issues"
   },
-  "homepage": "https://github.com/wix/react-native-navigation",
+  "homepage": "https://github.com/AndriiNarinian/react-native-navigation#readme",
   "readme": "https://github.com/wix/react-native-navigation#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wix/react-native-navigation.git"
+    "url": "https://github.com/AndriiNarinian/react-native-navigation.git"
   },
   "main": "src/index.js",
   "scripts": {

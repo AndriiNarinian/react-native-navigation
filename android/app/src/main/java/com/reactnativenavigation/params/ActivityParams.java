@@ -12,5 +12,6 @@ public class ActivityParams {
     public List<ScreenParams> tabParams;
     public SideMenuParams leftSideMenuParams;
     public SideMenuParams rightSideMenuParams;
+    public OverlayParams overlayParams;
     public boolean animateShow;
 }
