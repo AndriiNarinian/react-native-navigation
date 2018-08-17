@@ -1,6 +1,6 @@
 {
   "name": "rolique-react-native-navigation",
-  "version": "1.2.4",
+  "version": "1.2.14",
   "description": "React Native Navigation - truly native navigation for iOS and Android",
   "license": "MIT",
   "nativePackage": true,
